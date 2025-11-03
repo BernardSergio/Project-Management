@@ -1,0 +1,40 @@
+version: "3.9"
+
+services:
+  projectdb:
+    image: mysql:8.0
+    container_name: project-management-db
+    environment:
+      MYSQL_ROOT_PASSWORD: DevPass#2025
+      MYSQL_DATABASE: project_management_db
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./db:/var/lib/mysql
+    networks:
+      - projectnetwork
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  project-app:
+      build: .
+      image: project-management-app
+      container_name: project-management-app
+      environment:
+        SPRING_DATASOURCE_URL: jdbc:mysql://projectdb:3306/project_management_db
+        SPRING_DATASOURCE_USERNAME: root
+        SPRING_DATASOURCE_PASSWORD: DevPass#2025
+      ports:
+        - "8080:8080"
+      depends_on:
+        projectdb:
+          condition: service_healthy
+      networks:
+        - projectnetwork
+
+networks:
+  projectnetwork:
+    driver: bridge

@@ -1,0 +1,9 @@
+SET FOREIGN_KEY_CHECKS = 0;
+
+TRUNCATE TABLE `employee_projects`;
+TRUNCATE TABLE `employee_tasks`;
+TRUNCATE TABLE `employees`;
+TRUNCATE TABLE `projects`;
+TRUNCATE TABLE `tasks`;
+
+SET FOREIGN_KEY_CHECKS = 1;

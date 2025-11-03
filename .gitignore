@@ -1,0 +1,46 @@
+# Maven / Java
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.log
+.mvn/wrapper/maven-wrapper.jar
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# Eclipse / STS
+*.classpath
+*.project
+*.factorypath
+.settings/
+.springBeans
+.sts4-cache/
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+
+# VS Code
+.vscode/
+
+# Docker
+**/db/
+docker-compose.override.yml
+*.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Optional: exclude IDE-specific run configurations
+*.run.xml

@@ -1,0 +1,415 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  transition: all 0.3s ease;
+}
+
+:root {
+  --primary-bg: #f3f8f2;
+  --secondary-bg: #3581b8;
+  --secondary-bg-translucent: #3581b86e;
+  --accent: #fba060;
+  --accent-hover: #26597e;
+  --text-primary: #fba060;
+  --text-secondary: #dee2d6;
+  --text-content: #0a0a0b;
+  --text-content-secondary: #6e6e70;
+  --text-accent: #fba060;
+  --border: #0a0a0b;
+  --shadow: rgba(0, 0, 0, 0.3);
+  --highlight: #3b82f6;
+  --danger: #d21a1a;
+}
+
+body {
+  background: var(--primary-bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+hr {
+  margin-block: 20px;
+}
+
+.dropdown-menu hr {
+  margin-block: 0;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+p.danger {
+  color: var(--danger);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar {
+  background: var(--secondary-bg);
+  padding: 32px 24px;
+  box-shadow: 2px 0 10px var(--shadow);
+}
+
+.sidebar h2 {
+  margin-right: 20px;
+  font-size: 24px;
+  font-weight: 900;
+  margin-bottom: 40px;
+  color: var(--text-fba060);
+  text-align: right;
+}
+
+.content {
+  padding: 48px;
+  background: var(--primary-bg);
+  overflow-y: auto;
+}
+
+.content p {
+  font-size: 1.25rem;
+  color: var(--text-content);
+  margin-top: 1rem;
+}
+
+.top-bar {
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button-group {
+  display: flex;
+  gap: 20px;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-self: end;
+  justify-content: end;
+}
+
+nav button {
+  background: transparent;
+  color: var(--text-secondary);
+  border: none;
+  padding: 14px 20px;
+  font-size: 18px;
+  font-weight: 900;
+  border-radius: 200px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  width: fit-content;
+  align-self: end;
+}
+
+main button {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  background: var(--secondary-bg);
+  color: var(--text-secondary);
+  font-weight: 900;
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 200px;
+  border: none;
+}
+
+button.submit {
+  background: var(--text-primary);
+  color: var(--text-secondary);
+}
+
+button.cancel {
+  background: var(--text-content-secondary);
+  color: var(--text-secondary);
+}
+
+button:hover {
+  background: var(--accent-hover);
+  transform: translateX(-5px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+
+button:active {
+  transform: translateX(3px) scale(0.98);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+thead {
+  background: var(--secondary-bg);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+thead tr {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+th {
+  padding: 1rem 24px;
+  text-align: left;
+  font-weight: 900;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.85rem;
+}
+
+tbody tr:hover {
+  background: var(--accent);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+td {
+  padding: 1rem 24px;
+  color: var(--text-content);
+}
+
+td:first-child {
+  font-weight: 500;
+}
+
+.action-menu button {
+  background: transparent;
+  border: none;
+  color: var(--text-content);
+  cursor: pointer;
+}
+
+.action-menu button:hover {
+  background: none;
+  border: none;
+  color: var(--secondary-bg);
+  transform: scale(1.25);
+  box-shadow: none;
+}
+
+.action-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.5rem);
+  background: var(--secondary-bg);
+  border-radius: 8px;
+  min-width: max-content;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.dropdown-menu.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.dropdown-menu a.danger {
+  color: var(--danger);
+}
+
+.dropdown-menu a:hover {
+  background: var(--text-primary);
+}
+
+.dropdown-menu a.danger:hover {
+  background: var(--danger);
+  color: var(--text-secondary);
+}
+
+.info > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info > div:last-child {
+  display: flex;
+  justify-content: space-between;
+}
+
+.info > div:last-child > div {
+  display: block;
+}
+
+.info h2 {
+  color: var(--text-content);
+  justify-content: space-between;
+  font-weight: 900;
+}
+
+.info p {
+  color: var(--text-content-secondary);
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 18px;
+  margin: 0;
+}
+
+.info p.description,
+.info p span {
+  color: var(--text-content);
+  font-weight: 500;
+}
+
+.info p.description {
+  font-style: italic;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: flex;
+  gap: 100px;
+  align-items: center;
+}
+
+.form-group {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex: 1;
+}
+
+form > div.form-actions {
+  display: flex;
+  gap: 20px;
+  justify-content: end;
+}
+
+input {
+  padding: 16px;
+  border: none;
+  border-radius: 8px;
+  background: var(--secondary-bg-translucent);
+  box-shadow: 2px 0 10px var(--shadow);
+  color: var(--text-content);
+  font-weight: 700;
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--text-primary);
+}
+
+input[type="date"] {
+  max-width: max-content;
+}
+
+form input {
+  flex: 1;
+}
+
+.project-form > div:nth-child(2) {
+  gap: 50px;
+}
+
+.project-form > div > div {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+label {
+  color: var(--text-content-secondary);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.select {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.select span {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.home-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 50px;
+}
+
+.project-info {
+  margin-top: 50px;
+}
+
+.project-info h2 {
+  color: var(--secondary-bg);
+}
+
+.project-info > p:first-of-type {
+  margin-bottom: 50px;
+  font-style: italic;
+}
+
+p.title {
+  color: var(--text-content);
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+}
+
+p.subtitle {
+  color: var(--text-content-secondary);
+  font-weight: 700;
+  text-align: center;
+  margin-top: 0px;
+}
+
+.group-info {
+  text-align: center;
+  color: var(--text-content);
+}
+
+.group-info ul {
+  list-style: none;
+}

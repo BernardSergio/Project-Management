@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: project-management
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/project_management_db?createDatabaseIfNotExist=true}
+    username: ${SPRING_DATASOURCE_USERNAME:root}
+    password: ${SPRING_DATASOURCE_PASSWORD:DevPass#2025}
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+      show-sql: true
+      database-platform: org.hibernate.dialect.MySQL8Dialect
+  jackson:
+    date-format: MM dd, yyyy hh:mm a
+    time-zone: GMT+08:00
