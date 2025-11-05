@@ -7,30 +7,34 @@
 }
 
 :root {
-  --primary-bg: #f3f8f2;
-  --secondary-bg: #3581b8;
-  --secondary-bg-translucent: #3581b86e;
-  --accent: #fba060;
-  --accent-hover: #26597e;
-  --text-primary: #fba060;
-  --text-secondary: #dee2d6;
-  --text-content: #0a0a0b;
-  --text-content-secondary: #6e6e70;
-  --text-accent: #fba060;
-  --border: #0a0a0b;
-  --shadow: rgba(0, 0, 0, 0.3);
-  --highlight: #3b82f6;
-  --danger: #d21a1a;
+  /* Dark Blue & Red Theme for St. Therese School */
+  --primary-bg: #0a1628;
+  --secondary-bg: #1e3a5f;
+  --secondary-bg-translucent: #1e3a5faa;
+  --accent: #c41e3a;
+  --accent-hover: #9a1829;
+  --text-primary: #ffffff;
+  --text-secondary: #e8eaf0;
+  --text-content: #f5f5f7;
+  --text-content-secondary: #a8b2c1;
+  --text-accent: #c41e3a;
+  --border: #2d4a6e;
+  --shadow: rgba(0, 0, 0, 0.5);
+  --highlight: #4a90e2;
+  --danger: #c41e3a;
+  --card-bg: #152238;
 }
 
 body {
-  background: var(--primary-bg);
+  background: linear-gradient(135deg, var(--primary-bg) 0%, #0f1f38 100%);
   color: var(--text-primary);
   line-height: 1.6;
+  min-height: 100vh;
 }
 
 hr {
   margin-block: 20px;
+  border-color: var(--border);
 }
 
 .dropdown-menu hr {
@@ -47,24 +51,59 @@ p.danger {
 
 .layout {
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 320px 1fr;
   height: 100vh;
   overflow: hidden;
 }
 
 .sidebar {
-  background: var(--secondary-bg);
+  background: linear-gradient(180deg, var(--secondary-bg) 0%, #152238 100%);
   padding: 32px 24px;
-  box-shadow: 2px 0 10px var(--shadow);
+  box-shadow: 4px 0 20px var(--shadow);
+  border-right: 2px solid var(--border);
 }
 
-.sidebar h2 {
-  margin-right: 20px;
-  font-size: 24px;
+.school-header {
+  text-align: center;
+  margin-bottom: 50px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid var(--accent);
+}
+
+.school-icon {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 20px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(196, 30, 58, 0.4);
+  border: 3px solid var(--text-primary);
+}
+
+.logo-img {
+  width: 85px;
+  height: 85px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.school-header h2 {
+  font-size: 26px;
   font-weight: 900;
-  margin-bottom: 40px;
-  color: var(--text-fba060);
-  text-align: right;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.school-header .tagline {
+  font-size: 14px;
+  color: var(--text-content-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .content {
@@ -94,24 +133,43 @@ p.danger {
 nav {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  justify-self: end;
-  justify-content: end;
+  gap: 16px;
 }
 
 nav button {
   background: transparent;
   color: var(--text-secondary);
-  border: none;
-  padding: 14px 20px;
-  font-size: 18px;
-  font-weight: 900;
-  border-radius: 200px;
+  border: 2px solid transparent;
+  padding: 16px 24px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 12px;
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  width: fit-content;
-  align-self: end;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+nav button i {
+  font-size: 20px;
+  color: var(--accent);
+  transition: transform 0.3s ease;
+}
+
+nav button:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: translateX(8px);
+  box-shadow: 0 4px 16px rgba(196, 30, 58, 0.4);
+}
+
+nav button:hover i {
+  transform: scale(1.2);
+  color: var(--text-primary);
 }
 
 main button {
@@ -122,62 +180,80 @@ main button {
   background: var(--secondary-bg);
   color: var(--text-secondary);
   font-weight: 900;
-  padding: 12px;
+  padding: 14px 24px;
   cursor: pointer;
-  border-radius: 200px;
-  border: none;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 button.submit {
-  background: var(--text-primary);
-  color: var(--text-secondary);
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--text-primary);
+}
+
+button.submit:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
 }
 
 button.cancel {
   background: var(--text-content-secondary);
-  color: var(--text-secondary);
+  color: var(--text-primary);
+  border-color: var(--text-content-secondary);
 }
 
-button:hover {
-  background: var(--accent-hover);
-  transform: translateX(-5px);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+main button:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(196, 30, 58, 0.4);
 }
 
-button:active {
-  transform: translateX(3px) scale(0.98);
+main button:active {
+  transform: translateY(0) scale(0.98);
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.95rem;
+  background: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px var(--shadow);
 }
 
 thead {
-  background: var(--secondary-bg);
+  background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--accent) 100%);
   position: sticky;
   top: 0;
   z-index: 10;
 }
 
 thead tr {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 th {
-  padding: 1rem 24px;
+  padding: 1.25rem 24px;
   text-align: left;
   font-weight: 900;
   color: var(--text-primary);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
   font-size: 0.85rem;
 }
 
+tbody tr {
+  border-bottom: 1px solid var(--border);
+  background: var(--card-bg);
+}
+
 tbody tr:hover {
-  background: var(--accent);
-  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
+  background: var(--secondary-bg);
+  box-shadow: 0 4px 12px rgba(196, 30, 58, 0.2);
 }
 
 tbody tr:last-child {
@@ -185,12 +261,13 @@ tbody tr:last-child {
 }
 
 td {
-  padding: 1rem 24px;
+  padding: 1.25rem 24px;
   color: var(--text-content);
 }
 
 td:first-child {
-  font-weight: 500;
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
 .action-menu button {
@@ -198,12 +275,13 @@ td:first-child {
   border: none;
   color: var(--text-content);
   cursor: pointer;
+  font-size: 18px;
 }
 
 .action-menu button:hover {
   background: none;
   border: none;
-  color: var(--secondary-bg);
+  color: var(--accent);
   transform: scale(1.25);
   box-shadow: none;
 }
@@ -218,9 +296,10 @@ td:first-child {
   right: 0;
   top: calc(100% + 0.5rem);
   background: var(--secondary-bg);
-  border-radius: 8px;
+  border: 2px solid var(--border);
+  border-radius: 12px;
   min-width: max-content;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
   opacity: 0;
   visibility: hidden;
   transform: translateY(-10px);
@@ -238,7 +317,7 @@ td:first-child {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 16px;
+  padding: 16px 20px;
   color: var(--text-secondary);
   text-decoration: none;
   cursor: pointer;
@@ -250,12 +329,13 @@ td:first-child {
 }
 
 .dropdown-menu a:hover {
-  background: var(--text-primary);
+  background: var(--accent);
+  color: var(--text-primary);
 }
 
 .dropdown-menu a.danger:hover {
   background: var(--danger);
-  color: var(--text-secondary);
+  color: var(--text-primary);
 }
 
 .info > div:first-child {
@@ -274,14 +354,12 @@ td:first-child {
 }
 
 .info h2 {
-  color: var(--text-content);
-  justify-content: space-between;
+  color: var(--text-primary);
   font-weight: 900;
 }
 
 .info p {
   color: var(--text-content-secondary);
-  justify-content: space-between;
   font-weight: 700;
   font-size: 18px;
   margin: 0;
@@ -324,7 +402,7 @@ form > div.form-actions {
 
 input {
   padding: 16px;
-  border: none;
+  border: 2px solid var(--border);
   border-radius: 8px;
   background: var(--secondary-bg-translucent);
   box-shadow: 2px 0 10px var(--shadow);
@@ -332,10 +410,16 @@ input {
   font-weight: 700;
 }
 
+input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(196, 30, 58, 0.2);
+}
+
 input[type="checkbox"] {
   width: 20px;
   height: 20px;
-  accent-color: var(--text-primary);
+  accent-color: var(--accent);
 }
 
 input[type="date"] {
@@ -355,6 +439,7 @@ form input {
   align-items: center;
   gap: 20px;
 }
+
 label {
   color: var(--text-content-secondary);
   font-weight: 700;
@@ -373,17 +458,80 @@ label {
 }
 
 .home-container {
-  max-width: 900px;
+  max-width: 1100px;
   margin: auto;
-  padding: 50px;
+  padding: 50px 20px;
+}
+
+.welcome-banner {
+  text-align: center;
+  margin-bottom: 60px;
+  padding: 40px;
+  background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--card-bg) 100%);
+  border-radius: 16px;
+  border: 2px solid var(--accent);
+  box-shadow: 0 12px 40px rgba(196, 30, 58, 0.3);
+}
+
+.welcome-banner h1 {
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .project-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
   margin-top: 50px;
 }
 
-.project-info h2 {
-  color: var(--secondary-bg);
+.info-card {
+  background: var(--card-bg);
+  padding: 36px;
+  border-radius: 16px;
+  border: 2px solid var(--border);
+  box-shadow: 0 8px 24px var(--shadow);
+  transition: all 0.3s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent);
+  box-shadow: 0 12px 32px rgba(196, 30, 58, 0.4);
+}
+
+.card-icon {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, var(--accent) 0%, #9a1829 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  box-shadow: 0 6px 20px rgba(196, 30, 58, 0.4);
+}
+
+.card-icon i {
+  font-size: 32px;
+  color: var(--text-primary);
+}
+
+.info-card h2 {
+  color: var(--text-primary);
+  font-size: 24px;
+  font-weight: 900;
+  margin-bottom: 16px;
+}
+
+.info-card p {
+  color: var(--text-content-secondary);
+  font-size: 16px;
+  line-height: 1.8;
+  margin: 0;
 }
 
 .project-info > p:first-of-type {
@@ -392,7 +540,7 @@ label {
 }
 
 p.title {
-  color: var(--text-content);
+  color: var(--text-primary);
   font-size: 24px;
   font-weight: 700;
   text-align: center;
@@ -403,6 +551,8 @@ p.subtitle {
   font-weight: 700;
   text-align: center;
   margin-top: 0px;
+  font-size: 18px;
+  letter-spacing: 1px;
 }
 
 .group-info {
@@ -412,4 +562,22 @@ p.subtitle {
 
 .group-info ul {
   list-style: none;
+}
+
+.home-footer {
+  text-align: center;
+  margin-top: 80px;
+  padding-top: 40px;
+  border-top: 2px solid var(--border);
+}
+
+.home-footer p {
+  color: var(--text-content-secondary);
+  font-size: 14px;
+  margin: 8px 0;
+}
+
+.home-footer .copyright {
+  font-weight: 600;
+  color: var(--text-primary);
 }
